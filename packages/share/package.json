@@ -1,0 +1,14 @@
+{
+  "name": "@talelin/monitor-share",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/core.js",
+  "module": "dist/share.esm.js",
+  "files": [
+    "dist"
+  ],
+  "typings": "dist/types",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

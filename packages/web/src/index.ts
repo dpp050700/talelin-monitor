@@ -1,6 +1,3 @@
-console.log(11123)
-import test from './utils'
+import Monitor from '@talelin/monitor-browser'
 
-test(11123)
-
-export const name = 1
+export default Monitor

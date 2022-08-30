@@ -20,6 +20,9 @@ const outputDir = path.resolve(buildTargetPackage, 'dist')
 
 const commonConfig = {
   input: `${buildTargetPackage}/src/index.ts`,
+  output: {
+    exports: 'auto'
+  },
   plugins: [
     nodeResolve(),
     commonjs(),
@@ -36,8 +39,8 @@ const commonConfig = {
       tsconfigOverride: {
         compilerOptions: {
           declaration: true,
-          declarationMap: true,
-          declarationDir: `${outputDir}/packages/`, // 类型声明文件的输出目录
+          declarationMap: false,
+          declarationDir: `${outputDir}/types/`, // 类型声明文件的输出目录
           module: 'ES2015'
           // paths
         }
@@ -83,10 +86,6 @@ const iifePackage = {
     ...commonConfig.output
   },
   plugins: [...commonConfig.plugins, terser()]
-}
-
-let obj = {
-  esmConfig
 }
 
 module.exports = [esmConfig, cjsPackage, iifePackage]

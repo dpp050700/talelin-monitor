@@ -13,7 +13,10 @@
     "module": "CommonJS",
     "declaration": true,
     "allowJs": false,
-    "lib": ["es6", "dom"]
+    "lib": ["es6", "dom"],
+    "paths": {
+      "@talelin/monitor-*": ["packages/*/src"]
+    }
   },
   "include": ["packages/**/*"],
   "exclude": ["node_modules"]

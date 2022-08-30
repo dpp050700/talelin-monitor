@@ -1,0 +1,17 @@
+{
+  "name": "@talelin/monitor-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/core.js",
+  "module": "dist/core.esm.js",
+  "files": [
+    "dist"
+  ],
+  "typings": "dist/types",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@talelin/monitor-share": "workspace:*"
+  }
+}

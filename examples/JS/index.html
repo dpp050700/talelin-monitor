@@ -5,15 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="../../dist/web/src/index.js"></script>
+    <script src="../../packages/web/dist/web.min.js"></script>
+    <script src="./index.js"></script>
+    <script src="test.js"></script>
   </head>
   <body>
     <button id="triggerJSError" onclick="triggerJSError()">触发 JS 错误</button>
+
+    <button onclick="triggerPromiseError()">触发 Promise 错误</button>
   </body>
   <script>
     function triggerJSError() {
       const a = { name: 1 }
       console.log(a.b.c)
+    }
+
+    function triggerPromiseError() {
+      new Promise(function () {
+        window.someVar.error = 'error'
+      })
     }
   </script>
 </html>
