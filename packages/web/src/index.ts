@@ -1,3 +1,4 @@
 import Monitor from '@talelin/monitor-browser'
+import MonitorVue from '@talelin/monitor-vue'
 
-export default Monitor
+export { Monitor, MonitorVue }

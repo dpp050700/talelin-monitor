@@ -1,9 +1,9 @@
 {
-  "name": "@talelin/monitor-share",
+  "name": "@talelin/monitor-vue",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/share.js",
-  "module": "dist/share.esm.js",
+  "main": "dist/vue.js",
+  "module": "dist/vue.esm.js",
   "files": [
     "dist"
   ],

@@ -21,8 +21,12 @@ const outputDir = path.resolve(buildTargetPackage, 'dist')
 const commonConfig = {
   input: `${buildTargetPackage}/src/index.ts`,
   output: {
-    exports: 'auto'
+    exports: 'auto',
+    globals: {
+      axios: 'axios'
+    }
   },
+
   plugins: [
     nodeResolve(),
     commonjs(),

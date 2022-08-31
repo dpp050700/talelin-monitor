@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@talelin/monitor-share": "workspace:*"
+    "@talelin/monitor-share": "workspace:*",
+    "axios": "^0.27.2"
   }
 }
