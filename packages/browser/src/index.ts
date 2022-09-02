@@ -11,6 +11,7 @@ export const getErrorKey = (event: ErrorEvent | Event) => {
 
 interface IMonitorOptions {
   url: string // 上报地址
+  interceptors?: any // 上报请求拦截
   appId: string | number // 项目标识
   jsError?: boolean // 是否收集 js error
   resourceError?: boolean // 是否收集 资源 error
