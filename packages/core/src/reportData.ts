@@ -1,5 +1,4 @@
 import axios from 'axios/dist/axios'
-// import axios from 'axios'
 
 export function reportData(data) {
   axios
@@ -7,7 +6,6 @@ export function reportData(data) {
       content: JSON.stringify(data)
     })
     .catch((e) => {})
-  // const img = new Image()
-  // img.src = ``
+
   console.log(data)
 }
