@@ -10,5 +10,11 @@
   "typings": "dist/types",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@talelin/monitor-core": "workspace:*"
+  },
+  "dependencies": {
+    "semver": "^7.3.7"
+  }
 }
