@@ -2,6 +2,27 @@ import { reportData } from '@talelin/monitor-core'
 
 import semver from 'semver'
 
+function formatComponentName(vm, version) {
+  switch (version) {
+    case 2:
+      if (vm.$root === vm) return 'root'
+      var name = vm._isVue ? (vm.$options && vm.$options.name) || (vm.$options && vm.$options._componentTag) : vm.name
+      return (
+        (name ? 'component <' + name + '>' : 'anonymous component') +
+        (vm._isVue && vm.$options && vm.$options.__file ? ' at ' + (vm.$options && vm.$options.__file) : '')
+      )
+      break
+    case 2:
+      if (vm.$root === vm) return 'root'
+      const comName = vm.$options && vm.$options.name
+      return comName ? 'component <' + comName + '>' : 'anonymous component'
+      break
+
+    default:
+      break
+  }
+}
+
 export function handlerVueError(error, vm, info, Vue) {
   const vueVersion = semver.valid(Vue?.version)
   if (vueVersion) {
@@ -18,7 +39,15 @@ export function handlerVueError(error, vm, info, Vue) {
 }
 
 function vue2Handler(vm) {
-  console.log(vm, 22)
+  return {
+    componentName: formatComponentName(vm, 2),
+    propsData: vm.$options && vm.$options.propsData
+  }
 }
 
-function vue3Handler(vm) {}
+function vue3Handler(vm) {
+  return {
+    componentName: formatComponentName(vm, 3),
+    propsData: vm.$props
+  }
+}

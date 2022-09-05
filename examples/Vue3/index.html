@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vue2-demo</title>
+    <title>vue3-demo</title>
   </head>
 
   <body>
@@ -11,10 +11,11 @@
       <!-- <button id="vueCodeError" @click="triggerError">触发 Vue 错误</button> -->
       <person> </person>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="../../packages/web/dist/web.min.js"></script>
     <script src="./initMito.js"></script>
     <script>
+      const { createApp } = Vue
       var Person = {
         template: '<button id="vueCodeError" @click="triggerError">触发 Vue 错误 </button>',
         name: 'Person',
@@ -30,16 +31,16 @@
         }
       }
 
-      new Vue({
-        el: '#app',
-        data: {},
-        components: { Person },
-        methods: {
-          // triggerError() {
-          //   this.person.age = 18
-          // }
-        }
+      const app = createApp({
+        data() {
+          return {}
+        },
+        components: { Person }
       })
+
+      app.use(MONITOR.MonitorVue)
+
+      app.mount('#app')
     </script>
   </body>
 </html>
