@@ -26,6 +26,7 @@ export default class Monitor {
   resourceError: boolean // 是否收集 资源 error
   promiseError: boolean // 是否收集 promise error
   vueError: boolean // 是否收集 vue error
+  reactError: boolean // 是否收集 react error
   ajaxError: boolean // 是否收集 ajax error
   appId: string | number // 项目标识
 

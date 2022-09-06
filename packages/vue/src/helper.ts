@@ -1,4 +1,5 @@
-import { reportData } from '@talelin/monitor-core'
+import { reportData, formatData } from '@talelin/monitor-core'
+import { ErrorCategory } from '@talelin/monitor-share'
 
 import semver from 'semver'
 
@@ -25,17 +26,22 @@ function formatComponentName(vm, version) {
 
 export function handlerVueError(error, vm, info, Vue) {
   const vueVersion = semver.valid(Vue?.version)
+  let data = formatData(ErrorCategory.VUE_ERROR, error) || {}
+  let comInfo = {}
+
   if (vueVersion) {
     if (semver.lt(vueVersion, '2.0.0')) {
       console.warn('未针对 Vue1.x 版本进行处理')
     } else if (semver.lt(vueVersion, '3.0.0')) {
-      vue2Handler(vm)
+      comInfo = vue2Handler(vm)
     } else if (semver.lt(vueVersion, '4.0.0')) {
-      vue3Handler(vm)
+      comInfo = vue3Handler(vm)
     } else {
       console.warn(`Vue 版本：${vueVersion} 非法`)
     }
   }
+
+  reportData(Object.assign({}, data, comInfo))
 }
 
 function vue2Handler(vm) {

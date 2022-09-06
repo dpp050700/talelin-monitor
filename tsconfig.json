@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "baseUrl": ".",
     "preserveConstEnums": true,
     "sourceMap": true,
@@ -16,7 +17,9 @@
     "lib": ["es6", "dom"],
     "paths": {
       "@talelin/monitor-*": ["packages/*/src"]
+      // "tslib": ["node_modules/tslib/tslib.d.ts"]
     }
+    // "moduleResolution": "Node"
   },
   "include": ["packages/**/*"],
   "exclude": ["node_modules"]

@@ -6,12 +6,14 @@ interface IBaseData {
 }
 
 interface IErrorData extends IBaseData {
-  type: ErrorCategory
-  message: string
-  filename: string
-  position: string
-  stack: string
+  type?: ErrorCategory
+  message?: string
+  filename?: string
+  position?: string
+  stack?: string
   level?: ErrorLevel
+  componentName?: string
+  propsData?: Record<string, any>
 }
 
 function getLines(stack) {
@@ -77,6 +79,26 @@ export function formatResourceErrorData(type: ErrorCategory, sourceData: any): I
   }
 }
 
+export function formatVueErrorData(type: ErrorCategory, sourceData: any): IErrorData {
+  return {
+    kind: MonitorCategory.STABILITY,
+    type,
+    url: '',
+    message: sourceData.message,
+    stack: getLines(sourceData.stack)
+  }
+}
+
+export function formatReactErrorData(type: ErrorCategory, sourceData: any): IErrorData {
+  return {
+    kind: MonitorCategory.STABILITY,
+    type,
+    url: '',
+    message: sourceData.message,
+    stack: getLines(sourceData.stack)
+  }
+}
+
 export function formatData(type: ErrorCategory, sourceData: any) {
   switch (type) {
     case ErrorCategory.JS_ERROR:
@@ -87,6 +109,12 @@ export function formatData(type: ErrorCategory, sourceData: any) {
       break
     case ErrorCategory.RESOURCE_ERROR:
       return formatResourceErrorData(type, sourceData)
+      break
+    case ErrorCategory.VUE_ERROR:
+      return formatVueErrorData(type, sourceData)
+      break
+    case ErrorCategory.REACT_ERROR:
+      return formatVueErrorData(type, sourceData)
       break
     default:
       break

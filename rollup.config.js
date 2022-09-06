@@ -18,12 +18,25 @@ const buildTargetPackage = path.resolve(packagesPath, buildTarget)
 
 const outputDir = path.resolve(buildTargetPackage, 'dist')
 
+// 解决 react 打包后 process undefined
+const processEnvBanner = `
+  var process = {
+    env: {
+      NODE_ENV: 'production'
+    }
+  }
+`
+
 const commonConfig = {
   input: `${buildTargetPackage}/src/index.ts`,
   output: {
+    banner: processEnvBanner,
     exports: 'auto',
     globals: {
-      axios: 'axios'
+      axios: 'axios',
+      react: 'React',
+      jsxRuntime: 'jsxRuntime'
+      // reactDom: 'ReactDom'
     }
   },
 
